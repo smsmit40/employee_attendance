@@ -1,0 +1,16 @@
+<!doctype html>
+<html>
+<head>
+<title>Employee Attendance</title>
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+<nav class = 'bg-green-400'>
+    <a href="{% url 'index' %}">Home</a>
+    <a href="{% url 'employees' %}">Employees</a>
+    <a href="{% url 'projects' %}">Projects</a>
+</nav>
+{% block content %}
+{% endblock %}
+</body>
+</html>
