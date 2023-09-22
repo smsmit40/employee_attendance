@@ -26,6 +26,9 @@ class Employee(models.Model):
     email = models.EmailField()
     department = models.CharField(max_length=2, choices=department_choices)
 
+    def __str__(self):
+        return f"{self.first_name} {self.last_name}"
+
 
 class Project(models.Model):
     CAPEX = "CA"
@@ -36,6 +39,9 @@ class Project(models.Model):
     ]
     name = models.CharField(max_length=50)
     type = models.CharField(max_length=2, choices=project_type_choices)
+
+    def __str__(self):
+        return self.name
 
 
 class TimeEntry(models.Model):

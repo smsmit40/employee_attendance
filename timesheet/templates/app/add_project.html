@@ -1,0 +1,14 @@
+{% extends 'app/base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+<h1>Add Project</h1>
+ <form method="POST" autocomplete="off">
+            {% csrf_token %}
+            {{form.name|as_crispy_field}}
+            <br> <br>
+            {{form.type|as_crispy_field}}
+            <br> <br>
+        </form>
+{% endblock %}

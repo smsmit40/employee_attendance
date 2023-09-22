@@ -1,4 +1,18 @@
 {% extends 'app/base.html' %}
 {% block content %}
-<h1>Project List</h1>
+<h1 class="flex justify-center">Project List</h1>
+<table class="h-screen flex justify-center">
+  <tr>
+    <th class="border-4 px-8 py-4">Project Name</th>
+    <th class="border-4 px-8 py-4">Project Type</th>
+    <th class="border-4 px-8 py-4">Project ID</th>
+  </tr>
+    {% for i in projects %}
+  <tr>
+    <td class="border-4 px-8 py-4">{{ i.name}}</td>
+    <td class="border-4 px-8 py-4">{{ i.type}}</td>
+    <td class="border-4 px-8 py-4"> {{ i.id }}</td>
+  </tr>
+{% endfor %}
+</table>
 {% endblock %}
