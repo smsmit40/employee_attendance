@@ -1,6 +1,7 @@
 {% extends 'app/base.html' %}
 {% block content %}
 <h1 class="flex justify-center">Project List</h1>
+
 <table class="h-screen flex justify-center">
   <tr>
     <th class="border-4 px-8 py-4">Project Name</th>
@@ -12,6 +13,10 @@
     <td class="border-4 px-8 py-4">{{ i.name}}</td>
     <td class="border-4 px-8 py-4">{{ i.type}}</td>
     <td class="border-4 px-8 py-4"> {{ i.id }}</td>
+    <td class="border-4 px-8 py-4"><div class="flex space-x-2">
+      <a href="{% url 'edit_project' i.id %}">Edit</a>
+      <a href="{% url 'delete_project' i.id %}">Delete</a>
+    </div></td>
   </tr>
 {% endfor %}
 </table>

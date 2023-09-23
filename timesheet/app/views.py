@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Employee, TimeEntry, Project
 from .forms import ProjectForm
 
@@ -26,4 +26,31 @@ def project_add(request):
     context = {
         'form': form
     }
+    if request.method == 'POST':
+        form = ProjectForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('projects')
+
+
     return render(request, 'app/add_project.html', context)
+
+
+def project_delete(request, id):
+    project = get_object_or_404(Project, id=id)
+    project.delete()
+    return redirect('projects')
+
+
+def project_edit(request, id):
+    project = get_object_or_404(Project, id=id)
+    form = ProjectForm(instance=project)
+    context = {
+        'form': form
+    }
+    if request.method == 'POST':
+        form = ProjectForm(request.POST, instance=project)
+        form.save()
+        return redirect('projects')
+
+    return render(request, 'app/edit_project.html', context)
