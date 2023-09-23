@@ -1,10 +1,14 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Employee, TimeEntry, Project
-from .forms import ProjectForm
+from .forms import ProjectForm, TimeEntryForm
 
 # Create your views here.
 def index(request):
-    return render(request, 'app/index.html')
+    form = TimeEntryForm()
+    context = {
+        'form': form
+    }
+    return render(request, 'app/index.html', context)
 
 def employee_list(request):
     employees = Employee.objects.all()

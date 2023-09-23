@@ -47,4 +47,5 @@ class Project(models.Model):
 class TimeEntry(models.Model):
     Employee = models.ForeignKey(Employee, on_delete=models.CASCADE)
     Project = models.ForeignKey(Project, on_delete=models.CASCADE)
-    date = models.DateField
+    hours = models.IntegerField(null=False, default=1)
+    date = models.DateField()
